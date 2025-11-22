@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background: url(example.jpg);
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+}
+
+.box {
+    width: 420px;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 35px 15px 25px;
+    margin: 30px;
+    background: rgba(23, 28, 40, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    color: #fff;
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-20px);
+    position: relative;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.5s ease;
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5px 0;
+    transition: height 0.5s ease, margin 0.5s ease;
+}
+
+.progress-bar::after {
+    content: "";
+    width: 68%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #3cb354, #5ee07a);
+    box-shadow: 0 0 10px rgba(60, 179, 84, 0.5);
+    border-radius: 10px;
+    animation: shimmer 2s infinite linear;
+}
+
+.progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 2.5s infinite;
+    z-index: 1;
+}
+
+@keyframes shine {
+    100% {
+        left: 100%;
+    }
+}
+
+.box-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.9);
+    max-height: 50px;
+    opacity: 1;
+    margin-top: 0;
+    transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.5s ease;
+}
+
+.name {
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: font-size 0.5s ease, margin 0.5s ease;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.place {
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-btn:hover {
+    color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+}
+
+.toggle-btn svg {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.box.small {
+    width: 260px;
+    height: 60px;
+    padding: 10px 35px 10px 20px;
+    justify-content: center;
+    gap: 5px;
+}
+
+.box.small .box-info {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+.box.small .progress-bar {
+    height: 6px;
+    margin: 2px 0 0 0;
+}
+
+.box.small .name {
+    font-size: 1em;
+    margin-bottom: 2px;
+}
+
+.box.small .toggle-btn svg {
+    transform: rotate(180deg);
+}

@@ -24,7 +24,7 @@ body {
     flex-direction: column;
     padding: 15px 35px 15px 25px;
     margin: 30px;
-    background: rgba(23, 28, 40, 0.75);
+    background: rgba(23, 28, 40, 0.5);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.1);
